@@ -1,0 +1,52 @@
+{% extends "base.html"%}
+
+{% block title %}New Bookmark{% endblock %}
+
+{% block extrastyle %}
+<style type="text/css">
+textarea, input { color: #000; }
+ul.errorlist li {
+  color: red;
+}
+input, textarea { width: 600px; margin-bottom: 20px;}
+</style>
+{% endblock %}
+
+{% block content %}
+<form method="POST" action="/entry/new">
+    <div class="fieldWrapper">
+        <label for="id_title">Title:</label>
+        <div class="input">
+        {{form.title|safe}}
+        {{ form.title.errors|safe }}
+        </div>
+    </div>
+    <div class="fieldWrapper">
+        <label for="id_url">Url:</label>
+        <div class="input">
+        {{form.url|safe}}
+        {{ form.url.errors|safe }}
+        </div>
+    </div>
+    <div class="fieldWrapper">
+        <label for="id_tags">Tags:</label>
+        <div class="input">
+        {{form.tags|safe}}
+        {{ form.tags.errors|safe }}
+        <p>You have to separate your tags with a new line or press enter.</p>
+        </div>
+    </div>
+    <div class="fieldWrapper">
+        <label for="id_status">Status:</label>
+        <div class="input">
+        {{ form.status|safe}}
+        {{ form.status.errors|safe }}
+        <p>Only paste with Live status will be dsplayed, default is draft.</p>
+        </div>
+    </div>
+    <div class="actions">
+      <input type="submit" name="submit" class="btn primary" value="Save">
+    </div>
+</form>
+{% endblock %}
+

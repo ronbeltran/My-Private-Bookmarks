@@ -1,0 +1,12 @@
+{% extends "base.html"%}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+<p><strong>Welcome to <a href="/">My Private Bookmarks!</a></strong></p>
+<p>A simple private bookmarking app for you. No need to register just use your Gmail account to sign-in.</p>
+  {% if not user %}
+    <p><strong><a href="{{ link }}">Login</a></strong> to get started.</p>
+  {% endif %}
+{% endblock %}
+

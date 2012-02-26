@@ -1,0 +1,27 @@
+{% extends "base.html"%}
+
+{% block title %}My Bookmarks{% endblock %}
+
+{% block content %}
+  {% if entries %}
+    <ul>
+    {% for entry in entries %}
+        <li>
+        <a href="{{ entry.url }}" title="{{ entry.pub_date.strftime('%d %b %Y') }}" target="_blank">{{ entry.title}}</a> 
+        <span class="pull-right">
+        {% if entry.tags %}
+        {% for tag in entry.tags %}
+        <a href="/tags/{{ tag }}">{{ tag|escape }}</a>{% if not loop.last %}| {% endif %}
+        {% endfor %}
+        | <a href="/entry/edit?entry_id={{ entry.key().id() }}" >edit</a>
+        {% endif %}
+        </span>
+       </li>
+    {% endfor %}
+    <ul>
+  {% else %}
+  <p>You haven't saved any boomarks yet.</p> 
+  {% endif %}
+{% endblock %}
+
+
